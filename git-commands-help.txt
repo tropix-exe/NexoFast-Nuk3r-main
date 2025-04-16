@@ -5,6 +5,7 @@ git add .
 
 git commit -m "The new changes that you did"
 
+
 git push
 
 ---------------------------------------------------------
@@ -13,3 +14,7 @@ want to get new code frome someone ?
 do this
 
 git pull
+
+
+==========================================================
+
