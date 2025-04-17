@@ -1,0 +1,2 @@
+TOKEN = "MTMyNTU0ODAyNTY0NDMxODg1Mg.G7-Toi.UtZVrdcYZ2OfefuwJj-Z4_2Uutsqyza24moQWI"
+PREFIX = "&"

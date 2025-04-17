@@ -4,32 +4,26 @@ import asyncio
 import os
 
 
-prefix = "&"
+TOKEN = "MTMyNTU0ODAyNTY0NDMxODg1Mg.G7-Toi.UtZVrdcYZ2OfefuwJj-Z4_2Uutsqyza24moQWI"
+PREFIX = "&"
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix=prefix, intents=intents, help_command=None)
-
+bot = commands.Bot(command_prefix=PREFIX, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
-    print(f"[+] Logged in as {bot.user.name}#{bot.user.discriminator}")
-    print(f"[+] Bot ID: {bot.user.id}")
-    print("[+] NexoFast is now online and ready.")
+    print(f"✅  Logged in as {bot.user} (ID: {bot.user.id})")
 
-
-async def load_commands():
-    for filename in os.listdir("./commands"):
-        if filename.endswith(".py"):
-            try:
-                await bot.load_extension(f"commands.{filename[:-3]}")
-                print(f"[+] Loaded: {filename}")
-            except Exception as e:
-                print(f"[!] Failed to load {filename}: {e}")
-
+async def load_extensions():
+    for file in os.listdir("./commands"):
+        if file.endswith(".py") and not file.startswith("_"):
+            await bot.load_extension(f"commands.{file[:-3]}")
+            print(f"🔌  Loaded commands.{file[:-3]}")
 
 async def main():
     async with bot:
-        await load_commands()
-        await bot.start("")  # If you want to test put your token here
+        await load_extensions()
+        await bot.start(TOKEN)
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
